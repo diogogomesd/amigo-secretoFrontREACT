@@ -12,8 +12,8 @@ export const getEvent = async (id: number): Promise<Event | null> => {
 export const searchCPF = async (eventId: number, cpf: string): Promise<SearchResult | false> => {
     console.log(eventId);
     console.log(cpf);
-    //const json = await req.get(`/events/${eventId}/search?cpf=${cpf}`);
-    const json = await axios.get(`http://localhost:3001/events/${eventId}/search?cpf=${cpf}`)
+    const json = await req.get(`/events/${eventId}/search?cpf=${cpf}`);
+    //const json = await axios.get(`http://localhost:3001/events/${eventId}/search?cpf=${cpf}`)
     if (json.data.person && json.data.personMatched) {
         return json.data as SearchResult;
     }

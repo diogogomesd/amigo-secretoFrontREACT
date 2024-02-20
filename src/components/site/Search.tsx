@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { SearchResult } from "@/types/SearchResult";
-import { useState } from "react";
-import { SearchForm } from "./SearchForm";
-import * as api from "@/api/site";
-import { SearchReveal } from "./SearchReveal";
+import { SearchResult } from '@/types/SearchResult';
+import { useState } from 'react';
+import { SearchForm } from './SearchForm';
+import * as api from '@/api/site';
+import { SearchReveal } from './SearchReveal';
 
 type Props = {
   id: number;
@@ -20,14 +20,16 @@ export const Search = ({ id }: Props) => {
     const result = await api.searchCPF(id, cpf);
     setLoading(false);
     if (!result)
-      return alert("Desculpe não encontramos resultados para esse cpf.");
+      return alert('Desculpe não encontramos resultados para esse cpf.');
 
     setResults(result);
   };
 
   return (
-    <section className="bg-gray-900 p-5 rounded">
-      {!results && <SearchForm onSearchButton={handleSearchButton} loading={loading} />}
+    <section className='bg-gray-900 p-5 rounded'>
+      {!results && (
+        <SearchForm onSearchButton={handleSearchButton} loading={loading} />
+      )}
       {results && <SearchReveal results={results} />}
     </section>
   );
